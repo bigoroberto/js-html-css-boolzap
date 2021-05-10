@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Fontawesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w=="
+    crossorigin="anonymous" />
+
+  <!-- font google -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
+
+  <!-- css -->
+  <link rel="stylesheet" href="assets/css/style.css">
+
+  <!-- vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <!-- dayjs -->
+  <script src="https://cdn.jsdelivr.net/npm/dayjs@1.10.4/dayjs.min.js"></script>
+  <title>Boolzapp</title>
+</head>
+
+<body>
+
+  <div id="app" class="container">
+
+    <aside class="left">
+
+      <header>
+        <div class="utente">
+          <img :src="'assets/img/avatar' + avatar +'.jpg'" alt="">
+          <span><strong>{{name}}</strong></span>
+        </div>
+        <div class="icone">
+          <i class="fas fa-circle-notch"></i>
+          <i class="fas fa-comment-alt"></i>
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+      </header>
+
+      <section class="notifiche">
+        <div class="contenitore-logo">
+          <i class="fas fa-bell-slash"></i>
+        </div>
+        <div class="notifica-desktop">
+          <p><strong>Ricevi notifiche di nuovi messaggi</strong></p>
+          <span><strong>Attiva notifiche desktop</strong></span>
+        </div>
+      </section>
+
+      <section class="search">
+        <div class="border">
+          <button><i class="fas fa-search"></i></button>
+          <input type="text" placeholder="Cerca o inizia una nuova chat">
+        </div>
+      </section>
+
+      <section class="chat">
+        <div class="list-chat">
+          <ul>
+            <li v-for="(contact, index) in contacts" @click="userActive = index">
+              <img :src="contact.img" alt="">
+              <h3>{{contact.name}}</h3>
+            </li>
+        </div>
+        </ul>
+      </section>
+
+
+    </aside>
+    <main class="right">
+
+      <header>
+        <div class="open-chat">
+          <div class="utente">
+            <img :src="'assets/img/avatar' + contacts[userActive].avatar +'.jpg'" alt="">
+            <span><strong>{{contacts[userActive].name}}</strong></span>
+
+          </div>
+        </div>
+        <div class="icone">
+          <i class="fas fa-search"></i>
+          <i class="fas fa-paperclip"></i>
+          <i class="fas fa-ellipsis-v"></i>
+        </div>
+      </header>
+
+      <section>
+        <div v-for="message in contacts[userActive].messages"
+              v-if="message.status === 'sent'">
+          <div class="msg-sent">
+            <div class="sent">
+              <span>{{message.text}}</span>
+              <span class="date">{{message.date}}</span>
+            </div>
+          </div>
+        </div>
+          <div v-else class="msg-received">
+            <div class="received">
+              <span>{{message.text}}</span>
+              <span class="date">{{message.date}}</span>
+            </div>
+          </div>
+      </section>
+
+      <footer>
+        <div class="icon-footer-sx">
+          <i class="far fa-smile"></i>
+        </div>
+        <div class="msg-footer">
+          <input @keyup.enter='generateMsg' v-model='newMsg' type="text" placeholder="Scrivi un messaggio">
+        </div>
+        <div class="icon-footer-dx">
+          <i class="fas fa-microphone"></i>
+        </div>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <script src="assets/js/script.js"></script>
+</body>
+
+</html>

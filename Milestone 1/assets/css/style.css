@@ -149,7 +149,7 @@ body{
   height: calc(100% - 190px);
   background-color: white;
   border-right: 2px solid lightgray;
-  overflow: auto;
+  overflow: scroll;
 }
 
 .container .left section.chat .list-chat ul{

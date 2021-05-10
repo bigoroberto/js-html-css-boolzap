@@ -199,6 +199,17 @@ body{
   align-items: center;
 }
 
+.container .right header .utente{
+  display: flex;
+  align-items: center;
+  width: 50%;
+}
+
+.container .right header img{
+  height: 50px;
+  border-radius: 999px;
+  margin: 0 20px;
+}
 .container .right header .icone{
   display: flex;
   justify-content: flex-end;
@@ -243,6 +254,7 @@ min-width: 60px;
 background-color: #d5f9bb;
 border-radius: 10px;
 padding: 10px;
+word-wrap: break-word;
 }
 
 .container .right section .msg-received .received{
@@ -254,6 +266,7 @@ padding: 10px;
   border-radius: 10px;
   margin: 0 50px;
   padding: 10px;
+  word-wrap: break-word;
 }
 /* /CONTAINER RIGHT SECTION*/
 

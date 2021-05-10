@@ -25,8 +25,8 @@
 
         <header>
           <div class="utente">
-            <img src="assets/img/avatar_io.jpg" alt="">
-            <span><strong>Nome Utente</strong></span>
+            <img :src="'assets/img/avatar' + avatar +'.jpg'" alt="">
+            <span><strong>{{name}}</strong></span>
           </div>
           <div class="icone">
               <i class="fas fa-circle-notch"></i>
@@ -57,6 +57,7 @@
             <ul>
               <li 
                 v-for="(contact, index) in contacts"
+                @click="userActive = index"
               >
                 <img :src="contact.img" alt="">
                 <h3>{{contact.name}}</h3>
@@ -71,7 +72,10 @@
 
         <header>
           <div class="open-chat">
-            ASDASDASD
+            <div class="utente">
+              <img :src="'assets/img/avatar' + contacts[userActive].avatar +'.jpg'" alt="">
+              <span><strong>{{contacts[userActive].name}}</strong></span>
+            </div>
           </div>
           <div class="icone">
             <i class="fas fa-search"></i>
@@ -83,7 +87,7 @@
         <section>
           <div class="msg-sent">
             <div class="sent">
-              <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus ipsum cum eum magnam delectus! Animi eaque voluptates culpa consequuntur obcaecati, ducimus quae error fugit autem rerum quo repellendus at, dolorem possimus quidem deserunt, assumenda ullam repellat fuga. Praesentium reprehenderit, eos quidem saepe officia itaque deleniti voluptas ipsa magni aliquid rerum?</span>
+              <span>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</span>
             </div>
           </div>
           <div class="msg-received">

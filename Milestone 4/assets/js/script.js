@@ -3,10 +3,8 @@ const app = new Vue({
   el: '#app',
 
   data: {
-    newMsg: '',
     name: 'Luisa',
     avatar: '_io',
-    userActive: 0,
     contacts: [
       {
         name: 'Michele',
@@ -96,23 +94,37 @@ const app = new Vue({
         ],
       },
     ],
+    userActive : 0,
+    strMessage:'',
+    strSearch:'',
   },
   methods: {
-    generateMsg() {
+    newMessage(){
       this.contacts[this.userActive].messages.push({
-        date: dayjs().format('HH/mm/ss'),
-        status: 'sent',
-        text: this.newMsg,
-      }),this.newMsg ='',
-      console.log(this.contacts[this.userActive].messages),
-        setTimeout(() => {
-          this.contacts[this.userActive].messages.push({
-            date: dayjs().format('HH/mm/ss'),
-            status: 'received',
-            text: 'ok',
-          })
-    }, 1000)
+        date: '10/01/2020 15:50:00',
+        text: this.strMessage,
+        status: 'sent'
+      });
+      this.strMessage='';
+      setTimeout(()=>{
+        this.contacts[this.userActive].messages.push({
+          date: '10/01/2020 15:50:00',
+          text:' Ok',
+          status: 'received'
+        });
+      },1000)
+    },
+
+    userSearch(){
+        let newContacts = this.contacts.filter((object)=>{
+          if(!object.name.toLowerCase().includes(this.strSearch.toLowerCase())){
+            return object.visible = false
+          }else{
+            return object.visible = true
+          }
+        })
+         
+        
     }
   }
-  
 })

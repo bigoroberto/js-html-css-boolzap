@@ -1,0 +1,226 @@
+/* GLOBAL */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    background-image: linear-gradient(#008a7f 0px,#008a7f 15vh,#d6dbd8 15vh,#d6dbd8 100vh);
+}
+i{
+    font-size: 20px;
+    cursor: pointer;
+}
+/* CONTAINER */
+.container{
+    height: 95%;
+    width: 80%;
+    min-width: 900px;
+    background-color: #FAFAFA;
+}
+.container .flex-center{
+    display: flex;
+    align-items: center;
+}
+.container .user img{
+    width: 50px;
+    border-radius: 50%;
+    margin: 0 15px;
+}
+.container .icon i{
+    color: #B1B1B1;
+    margin-right: 20px;
+}
+.container header, .container footer{
+    height: 70px;
+    justify-content: space-between;
+    background-color: #EAEAEA;
+}
+.container .left, .container .right{
+    float: left;
+    height: 100%;
+}
+/* CONTAINER LEFT */
+.container .left{
+    width: 35%;
+    border-right: 1px solid #bbbbbb;
+}
+.container .left .notification{
+    height: 70px;
+    background-color: #8EDAFC;
+}
+.container .left .notification i{
+    color: #8EDAFC;
+    background-color: #fff;
+    padding:12px 10px;
+    border-radius: 50%;
+    margin: 0 20px;
+}
+.container .left .notification span{
+    font-size: 12px;
+    text-decoration: underline;
+    opacity: .6;
+    font-weight: 700;
+    cursor: pointer;
+}
+/* LISTA CONTATTI */
+.container .left .serch-bar{
+    margin: 10px;
+    width: calc(100% - 20px);
+    background-color: #fff;
+    box-shadow: 0 0 2px 1px rgba(219, 219, 219, 0.5);
+}
+.container .left .serch-bar i{
+    color: #B1B1B1;
+    font-size: 15px;
+    padding: 10px 20px;
+    margin-right: 10px;
+}
+.container .left .serch-bar input{
+    width: 100%;
+    border: 0;
+    outline: none;
+}
+.container .left .contacts-list{
+    width: 100%;
+    height: calc(100% - 195px);
+    overflow-y:scroll;
+}
+
+.container .left .contacts-list ul{
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 2px 1px rgba(219, 219, 219, 0.5);
+}
+.container .left .contacts-list li{
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #B1B1B1;
+}
+.container .left .contacts-list li:hover{ 
+    background-color: #F4F5F5;
+    cursor: pointer;
+}
+.container .left .contacts-list li:last-child{
+    border: 0;
+}
+.container .left .contacts-list li .user{
+    display: flex;
+    align-items: initial;
+}
+.container .left .contacts-list li .preview{
+    font-size: 13px;
+    color: #888E91;
+    display: inline-block;
+    width: 150px;
+    margin-top: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.container .left .contacts-list li .date-text{
+    color: #888E91;
+    font-size: 13px;
+}
+/* CONTAINER RIGHT */
+.container .right{
+    width: 65%;
+    background-color: #fff;
+}
+.container .right .user h5{
+ color: #888E91;
+}
+.container .right section{
+    background-image: url('../img/mine.jpg');
+    height: calc(100% - 140px);
+    padding: 50px;
+    overflow-y: scroll;
+}
+.container .right section .text{
+    display: inline-block;
+    font-size: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 10px 50px 20px 15px;
+    position: relative;
+    min-width: 20%;
+    max-width: 50%;
+}
+.container .right section .text:hover i{
+    display: block;
+}
+.container .right section .text .date-text{
+    font-size: 9px;
+    color: #C1C4C5;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+.container .right section .text i{
+    font-size: 15px;
+    color: #C1C4C5;
+    position: absolute;
+    right: 10px;
+    top: 42%;
+    transform: translateY(-50%);
+    display: none;
+}
+/* CLASSI PER ELIMINARE MESSAGGIO */
+.del-mess{
+    width: 130px;
+    font-size: 13px;
+    text-align: center;
+    background-color: #fff;
+    position: absolute;
+    top: 60%;
+    right: 20px;
+    box-shadow: 0 2px 4px  rgba(0, 0, 0, .5);
+    display: none;
+    z-index: 999;
+}
+.active{
+    display: block;
+}
+.container .right section .text .del-mess p{
+    margin: 10px 0;
+    cursor: pointer;
+}
+.container .right section .text .del-mess p:hover{
+    opacity: .6;
+}
+/* CLASSI SENT E RECEIVED */
+.sent{
+    display: flex;
+    justify-content: flex-end;
+}
+.sent .text{
+    background-color: #D5F9BA;
+}
+.received{
+    display: flex;
+}
+.received .text{
+    background-color: #fff;
+}
+/* FOOTER */
+.container footer{
+    background-color: #F3EEEA;
+}
+.container footer i{
+    margin: 0 40px;
+    color: #6C7375;
+}
+.container footer input{
+    width: 80%;
+    padding: 15px;
+    border: 0;
+    border-radius: 10px;
+    outline: none;
+}

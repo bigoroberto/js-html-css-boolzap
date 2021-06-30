@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app" class="container">
+
+       <!--  LEFT SIDE -->
+        <aside class="left">
+            <!-- HEADER -->
+            <header class="flex-center">
+                <div class="flex-center user">
+                    <img :src="getImage(currentUser.avatar)" :alt="currentUser.name">
+                    <h4> {{ currentUser.name }} </h4>
+                </div>
+
+                <div class="icon">
+                    <i class="fas fa-circle-notch"></i>
+                    <i class="fas fa-comment-alt"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+            </header>
+            <!-- /HEADER -->
+
+            <!-- NOTIFICHE -->
+            <div class="flex-center notification">
+                <i class="fas fa-bell-slash"></i>
+               <div>
+                <h5>Ricevi notifiche di nuovi messaggi</h5>
+                <span>Attiva notifiche desktop</span>
+               </div>
+            </div>
+            <!-- /NOTIFICHE -->
+
+           <!--  CONTATTI -->
+            <div class="flex-center serch-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Cerca o inizia una nuova chat">
+            </div>
+
+            <div class="contacts-list">
+                <ul>
+                    <li 
+                    v-for="(contact,index) in contacts"
+                    @click=" selectUser = index"
+                    >
+                        <div class="user">
+                            <img :src="getImage(contact.avatar)" :alt="contact.name">
+                            <div>
+                                <h4> {{ contact.name }} </h4>
+                                <span class="preview">{{ contact.messages[contact.messages.length - 1].text }}</span>
+                            </div>
+                        </div>
+                        <span class="date-text">{{ contact.messages[contact.messages.length - 1].date }}</span>
+                    </li>
+                </ul>
+            </div>
+            <!--  /CONTATTI -->
+
+        </aside>
+        <!--  /LEFT SIDE -->
+
+        <!--  RIGHT SIDE -->
+        <main class="right">
+           <!--  HEADER -->
+            <header class="flex-center">
+
+                <div class=" flex-center user">
+                    <div>
+                        <img :src="getImage(contacts[selectUser].avatar)" :alt="contacts[selectUser].name">
+                    </div>
+                    <div>
+                        <h4> {{ contacts[selectUser].name }} </h4>
+                        <h5>Ultimo accesso il
+                            
+                            <span 
+                            v-for="(message, index) in contacts[selectUser].messages"
+                            v-if="index === contacts[selectUser].messages.length -1"
+                            >{{ message.date }}</span>
+                        
+                        </h5>
+                    </div>
+                </div>
+
+                <div class="icon">
+                    <i class="fas fa-search"></i>
+                    <i class="fas fa-paperclip"></i>
+                    <i class="fas fa-ellipsis-v"></i>
+                </div>
+
+            </header>
+            <!--  /HEADER -->
+
+            <!--  SECTION -->
+            <section>
+
+                <div
+                v-for="message in contacts[selectUser].messages"
+                :class="message.status"
+                >
+                    <span class="text"
+                    >{{ message.text }}
+                        <span class="date-text">
+                            {{ message.date }}
+                        </span>
+                        <i class="fas fa-chevron-down"></i>
+                    </span>
+                </div>
+
+            </section>
+            <!--  /SECTION -->
+
+            <!-- FOOTER -->
+            <footer class="flex-center">
+                <i class="far fa-smile"></i>
+                <input 
+                type="text" placeholder="Scrivi un messaggio"
+                v-model.trim="messaggioScritto"
+                @keyup.enter="sendMessage()"
+                >
+                <i class="fas fa-microphone"></i>
+            </footer>
+            <!-- /FOOTER -->
+            
+        </main>
+        <!--  /RIGHT SIDE -->
+       
+    </div>
+   
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.4/dayjs.min.js"></script>
+    <script src="assets/js/script.js"></script>
+   
+    
+</body>
+</html>
